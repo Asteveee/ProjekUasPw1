@@ -1,22 +1,23 @@
-// (5) Buat router Karyawan
+// (5) Buat router Barang
 const express = require('express')
-const Karyawan = require('../models/Karyawan')
+const Barang = require('../models/Barang')
+const Karyawan = require('../models/Barang')
 const router = express.Router() 
-const Mahasiswa = require('../models/Karyawan')
+const Mahasiswa = require('../models/Barang')
 
 // Create 
 router.post('/', async(req, res) => {
-    // tampung input mahasiswa 
-    const mahasiswaPost = new Karyawan({
-        nama: req.body.nama,
-        umur: req.body.umur
+    // tampung input barang
+    const barangPost = new Barang({
+        tipebarang: req.body.tipebarang,
+        jumlahbarang: req.body.jumlahbarang
     })
 
     try {
         // simpan data 
-        const karyawan = await karyawanPost.save()
+        const barang = await barangPost.save()
         // response
-        res.json(karyawan)
+        res.json(barang)
     } catch (error) {
         res.json({message: error})
     }
@@ -25,8 +26,8 @@ router.post('/', async(req, res) => {
 // Read
 router.get('/', async(req, res) => {
     try {
-        const karyawan = await Karyawan.find()
-        res.json(karyawan)
+        const barang = await Barang.find()
+        res.json(barang)
     } catch (error) {
         res.json({message: error})
     }
@@ -34,11 +35,11 @@ router.get('/', async(req, res) => {
 
 
 // Update 
-router.put('/:karyawanId', async(req, res) => {
-    // tampung input mahasiswa 
+router.put('/:barangId', async(req, res) => {
+    // tampung input barang 
     const data = {
-        nama: req.body.nama,
-        umur: req.body.umur
+        tipebarang: req.body.tipebarang,
+        jumlahbarang: req.body.jumlahbarang
     }
 
     try {
